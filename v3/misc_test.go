@@ -19,7 +19,7 @@ func TestTagValues_SetTagkey(t *testing.T) {
 	SetTagkey("cc")
 	t.Cleanup(func() { SetTagkey(btgkey) })
 	want := []string{"xxxxx"}
-	got := tagValues(myType{})
+	got := tagValues([]myType{{}})
 	if diff := cmp.Diff(got, want); diff != "" {
 		t.Errorf("mismatch (-want, +got):%s\n", diff)
 	}
@@ -27,7 +27,7 @@ func TestTagValues_SetTagkey(t *testing.T) {
 
 func TestTagValues(t *testing.T) {
 	want := []string{"field_1", "field_2", "field_5"}
-	got := tagValues(myType{})
+	got := tagValues([]myType{{}})
 	if diff := cmp.Diff(got, want); diff != "" {
 		t.Errorf("mismatch (-want, +got):%s\n", diff)
 	}
